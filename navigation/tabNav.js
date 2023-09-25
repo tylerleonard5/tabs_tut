@@ -1,18 +1,26 @@
 import React from 'react'
 import HomeScreen from '../Screens/Home';
 import NotificationScreen from '../Screens/Notification';
-import ProfileScreen from '../Screens/Profile';
 import SearchScreen from '../Screens/Search';
 import stackNav from './stackNav'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import  MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTheme } from 'react-native-paper';
-import { createStackNavigator } from '@react-navigation/stack';
+
 
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+
+// function getTabBarVisibility(route) {
+//     const routeName = getFocusedRouteNameFromRoute(route);
+//     console.log(routeName);
+//     if (routeName === 'Settings'){
+//         return 'none';
+//     }else{
+//         return 'flex';
+//     }
+//   }
 
 function tabNav() {
     const theme = useTheme();
@@ -38,11 +46,11 @@ function tabNav() {
                                 },
                                 tabBarBadge: '',
                                 tabBarBadgeStyle: {
-                                minWidth: 10,
-                                minHeight: 10,
-                                maxWidth: 10,
-                                maxHeight: 10,
-                                borderRadius: 5,
+                                    minWidth: 10,
+                                    minHeight: 10,
+                                    maxWidth: 10,
+                                    maxHeight: 10,
+                                    borderRadius: 5,
                                 },
                             }}
                 />
@@ -54,11 +62,13 @@ function tabNav() {
                             }}
                 />
                 <Tab.Screen name="Profile" component={stackNav} 
-                            options={{
+                            options={({ route }) => ({
                                 tabBarIcon: ({ color, size }) => {
                                     return <MaterialCommunityIcons name="account-circle" color={color} size={26}/>
                                 },
-                            }}
+                                headerShown: false,
+                                // tabBarStyle: { display: getTabBarVisibility(route) }
+                            })}
                 />
             </Tab.Navigator>
 
