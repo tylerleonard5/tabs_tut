@@ -1,6 +1,7 @@
 import React from 'react'
 import { ScrollView } from 'react-native'
 import InstagramPost from '../Components/InstagramPost'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 function Home() {
     const post1 = {
@@ -55,9 +56,9 @@ function Home() {
 
 
     return (
-        <ScrollView>
+        <KeyboardAwareScrollView>
             {postComponents}
-        </ScrollView>
+        </KeyboardAwareScrollView>
     );
 }
 export default Home;
