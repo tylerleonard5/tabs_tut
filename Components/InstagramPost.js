@@ -30,10 +30,7 @@ function CommentSection({ comments, onCommentSubmit }) {
                     onChangeText={(text) => setNewComment(text)}
                     style={{ marginTop: 10 }}
                 />
-                <KeyboardAwareScrollView>
-
                 <Button title="Post" onPress={handleCommentSubmit} />
-                </KeyboardAwareScrollView>
                 
         </ScrollView>
     );
@@ -51,9 +48,8 @@ function InstagramPost({ username, profImageUrl, imageUrl, likes, comments }) {
     };
 
     return (
-        <ScrollView>
             
-            <View style={{ margin: 10, padding: 10 , borderWidth: 1, borderColor: '#ccc', borderRadius: 10, backgroundColor: 'white' }}>
+            <View style={{ flex: 1, margin: 10, padding: 10 , borderWidth: 1, borderColor: '#ccc', borderRadius: 10, backgroundColor: 'white' }}>
                 {/* User Info */}
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Image
@@ -78,7 +74,7 @@ function InstagramPost({ username, profImageUrl, imageUrl, likes, comments }) {
 
                 {/* Likes Count */}
                 <Text style={{ fontWeight: 'bold', marginTop: 5 }}>{likes} likes</Text>
-
+                
                 {/* Comments */}
                 {!showComments && (
                     [...postComments].slice(-2).map((comment, index) => (
@@ -90,12 +86,10 @@ function InstagramPost({ username, profImageUrl, imageUrl, likes, comments }) {
                     ))
                 )}
                 {/* Comments */}
+  
+                {showComments && <CommentSection comments={postComments} onCommentSubmit={handleCommentSubmit} />}
                 
-                    {showComments && <CommentSection comments={postComments} onCommentSubmit={handleCommentSubmit} />}
-             
             </View>
-            
-        </ScrollView>
     );
 };
 

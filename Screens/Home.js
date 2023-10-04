@@ -44,21 +44,24 @@ function Home() {
 
     // Use the map function to render the components dynamically
     const postComponents = posts.map((post, index) => (
-        <InstagramPost
-        key={index} // It's important to provide a unique key for each component
-        username={post.username}
-        profImageUrl={post.profImageUrl}
-        imageUrl={post.imageUrl}
-        likes={post.likes}
-        comments={post.comments}
-        />
+            <InstagramPost
+            key={index} // It's important to provide a unique key for each component
+            username={post.username}
+            profImageUrl={post.profImageUrl}
+            imageUrl={post.imageUrl}
+            likes={post.likes}
+            comments={post.comments}
+            />
     ));
 
 
     return (
-        <KeyboardAwareScrollView>
+        <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }} extraScrollHeight={Platform.select({ android: 60, ios: 120 })} enableResetScrollToCoords={false}>
+
             {postComponents}
         </KeyboardAwareScrollView>
+            
+        
     );
 }
 export default Home;
